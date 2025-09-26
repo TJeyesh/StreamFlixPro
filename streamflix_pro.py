@@ -1,10 +1,10 @@
-
 import streamlit as st
 import json
 import pandas as pd
 from datetime import datetime
 import requests
 from urllib.parse import urlparse
+import matplotlib.pyplot as plt
 
 # Set page configuration
 st.set_page_config(
@@ -131,7 +131,7 @@ def load_content():
                     'rating': 9.2,
                     'description': 'In a world dominated by AI, a group of rebels fights to preserve human consciousness.',
                     'thumbnail': 'https://via.placeholder.com/300x450/667eea/white?text=Cyber+Revolution',
-                    'video_url': 'https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_1mb.mp4',
+                    'video_url': 'https://youtu.be/qzGxK6Uiu04',
                     'duration': '2h 15m',
                     'director': 'Alex Chen',
                     'cast': ['Emma Stone', 'Ryan Gosling', 'Oscar Isaac'],
@@ -149,7 +149,7 @@ def load_content():
                     'rating': 8.7,
                     'description': 'A deep-sea exploration team discovers an ancient underwater civilization.',
                     'thumbnail': 'https://via.placeholder.com/300x450/764ba2/white?text=Ocean+Depths',
-                    'video_url': 'https://sample-videos.com/zip/10/mp4/SampleVideo_640x360_1mb.mp4',
+                    'video_url': 'https://youtu.be/qzGxK6Uiu04',
                     'duration': '1h 58m',
                     'director': 'Maria Rodriguez',
                     'cast': ['Chris Pratt', 'Zoe Saldana', 'Michael Shannon'],
@@ -167,7 +167,7 @@ def load_content():
                     'rating': 8.9,
                     'description': 'A psychological thriller about memory manipulation and identity crisis.',
                     'thumbnail': 'https://via.placeholder.com/300x450/f093fb/white?text=Mind+Games',
-                    'video_url': 'https://sample-videos.com/zip/10/mp4/SampleVideo_720x480_1mb.mp4',
+                    'video_url': 'https://youtu.be/qzGxK6Uiu04',
                     'duration': '2h 5m',
                     'director': 'Christopher Nolan',
                     'cast': ['Leonardo DiCaprio', 'Marion Cotillard', 'Tom Hardy'],
@@ -202,7 +202,7 @@ def load_content():
                             'episode': 1,
                             'title': 'First Contact',
                             'description': 'The team encounters their first interdimensional threat.',
-                            'video_url': 'https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_2mb.mp4',
+                            'video_url': 'https://youtu.be/qzGxK6Uiu04',
                             'duration': '45m',
                             'air_date': '2024-01-15'
                         },
@@ -211,7 +211,7 @@ def load_content():
                             'episode': 2,
                             'title': 'The Anomaly',
                             'description': 'Strange readings lead the team to a mysterious space anomaly.',
-                            'video_url': 'https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_1mb.mp4',
+                            'video_url': 'https://youtu.be/qzGxK6Uiu04',
                             'duration': '44m',
                             'air_date': '2024-01-22'
                         }
@@ -240,7 +240,7 @@ def load_content():
                             'episode': 1,
                             'title': 'The Deal',
                             'description': 'A major corporate acquisition sets the stage for conflict.',
-                            'video_url': 'https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_1mb.mp4',
+                            'video_url': 'https://youtu.be/qzGxK6Uiu04',
                             'duration': '42m',
                             'air_date': '2023-05-10'
                         }
@@ -361,7 +361,7 @@ def display_home(content_data):
             if st.button("▶️ Watch Featured Movie", key="featured_movie"):
                 st.session_state.current_content = featured
                 st.session_state.content_type = 'movie'
-                st.experimental_rerun()
+                st.rerun()
 
     with col2:
         st.markdown("""
@@ -479,7 +479,7 @@ def display_search(content_data):
                             st.session_state.current_content = content
                             st.session_state.content_type = content_type
                             add_to_viewing_history(content)
-                            st.experimental_rerun()
+                            st.rerun()
         else:
             st.warning("No results found. Try different keywords.")
 
@@ -555,11 +555,11 @@ def display_watchlist(content_data):
             if st.button(f"▶️ Watch", key=f"watchlist_{content['id']}"):
                 st.session_state.current_content = content
                 st.session_state.content_type = content_type
-                st.experimental_rerun()
+                st.rerun()
 
             if st.button(f"❌ Remove", key=f"remove_{content['id']}"):
                 st.session_state.watchlist.remove((content['id'], content_type))
-                st.experimental_rerun()
+                st.rerun()
 
 def display_analytics(content_data):
     st.header("📊 Platform Analytics")
@@ -597,7 +597,13 @@ def display_analytics(content_data):
     st.subheader("⭐ Rating Distribution")
     ratings = [content['rating'] for content in content_data['movies'] + content_data['tv_shows']]
     rating_df = pd.DataFrame({'Rating': ratings})
-    st.histogram(rating_df['Rating'], bins=20)
+
+    fig, ax = plt.subplots()
+    ax.hist(rating_df['Rating'], bins=20, color='skyblue', edgecolor='black')
+    ax.set_xlabel('Rating')
+    ax.set_ylabel('Count')
+    ax.set_title('Rating Distribution')
+    st.pyplot(fig)
 
     # Top content
     st.subheader("🏆 Top Rated Content")
@@ -689,7 +695,7 @@ def display_enhanced_content_card(content, content_type):
             st.session_state.current_content = content
             st.session_state.content_type = content_type
             add_to_viewing_history(content)
-            st.experimental_rerun()
+            st.rerun()
 
     with col2:
         watchlist_key = (content['id'], content_type)
@@ -697,12 +703,12 @@ def display_enhanced_content_card(content, content_type):
             if st.button(f"❤️ Add", key=f"add_{content['id']}"):
                 st.session_state.watchlist.append(watchlist_key)
                 st.success("Added to watchlist!")
-                st.experimental_rerun()
+                st.rerun()
         else:
             if st.button(f"💔 Remove", key=f"rem_{content['id']}"):
                 st.session_state.watchlist.remove(watchlist_key)
                 st.success("Removed from watchlist!")
-                st.experimental_rerun()
+                st.rerun()
 
     with col3:
         if st.button(f"ℹ️ Info", key=f"info_{content['id']}"):
@@ -717,7 +723,7 @@ def display_content_thumbnail(content, content_type):
         st.session_state.current_content = content
         st.session_state.content_type = content_type
         add_to_viewing_history(content)
-        st.experimental_rerun()
+        st.rerun()
 
 def display_trending_card(content, content_type):
     st.markdown(f"""
@@ -733,7 +739,7 @@ def display_trending_card(content, content_type):
         st.session_state.current_content = content
         st.session_state.content_type = content_type
         add_to_viewing_history(content)
-        st.experimental_rerun()
+        st.rerun()
 
 def display_content_details(content, content_type):
     st.subheader(f"ℹ️ {content['title']} - Details")
@@ -797,6 +803,7 @@ def display_video_player(content, content_type):
     try:
         if content_type == 'movie':
             st.video(content['video_url'], start_time=0)
+            # st.video('https://youtu.be/qzGxK6Uiu04', start_time=0)
         else:  # TV show
             if 'episodes' in content:
                 st.subheader("📺 Episode Selection")
