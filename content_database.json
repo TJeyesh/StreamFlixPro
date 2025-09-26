@@ -2,62 +2,174 @@
   "movies": [
     {
       "id": 1,
-      "title": "Sample Movie 1",
-      "genre": "Action",
-      "year": 2023,
-      "rating": 8.5,
-      "description": "An exciting action movie with thrilling scenes.",
-      "thumbnail": "https://via.placeholder.com/300x450?text=Movie+1",
-      "video_url": "https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_1mb.mp4",
-      "duration": "2h 15m"
+      "title": "Cyber Revolution",
+      "genre": "Sci-Fi",
+      "year": 2024,
+      "rating": 9.2,
+      "description": "In a world dominated by AI, a group of rebels fights to preserve human consciousness.",
+      "thumbnail": "https://via.placeholder.com/300x450/667eea/white?text=Cyber+Revolution",
+      "video_url": "1.mp4",
+      "duration": "2h 15m",
+      "director": "Alex Chen",
+      "cast": [
+        "Emma Stone",
+        "Ryan Gosling",
+        "Oscar Isaac"
+      ],
+      "languages": [
+        "English",
+        "Spanish"
+      ],
+      "quality": [
+        "HD",
+        "4K"
+      ],
+      "views": 1250000,
+      "likes": 89750,
+      "release_date": "2024-03-15"
     },
     {
       "id": 2,
-      "title": "Sample Movie 2",
-      "genre": "Drama",
-      "year": 2022,
-      "rating": 7.8,
-      "description": "A compelling drama about human relationships.",
-      "thumbnail": "https://via.placeholder.com/300x450?text=Movie+2",
-      "video_url": "https://sample-videos.com/zip/10/mp4/SampleVideo_640x360_1mb.mp4",
-      "duration": "1h 45m"
+      "title": "Ocean Depths",
+      "genre": "Adventure",
+      "year": 2023,
+      "rating": 8.7,
+      "description": "A deep-sea exploration team discovers an ancient underwater civilization.",
+      "thumbnail": "https://via.placeholder.com/300x450/764ba2/white?text=Ocean+Depths",
+      "video_url": "2.mp4",
+      "duration": "1h 58m",
+      "director": "Maria Rodriguez",
+      "cast": [
+        "Chris Pratt",
+        "Zoe Saldana",
+        "Michael Shannon"
+      ],
+      "languages": [
+        "English",
+        "French"
+      ],
+      "quality": [
+        "HD",
+        "4K"
+      ],
+      "views": 980000,
+      "likes": 72400,
+      "release_date": "2023-08-22"
     },
     {
       "id": 3,
-      "title": "Sample Movie 3",
-      "genre": "Comedy",
+      "title": "Mind Games",
+      "genre": "Thriller",
       "year": 2024,
-      "rating": 8.2,
-      "description": "A hilarious comedy that will make you laugh.",
-      "thumbnail": "https://via.placeholder.com/300x450?text=Movie+3",
-      "video_url": "https://sample-videos.com/zip/10/mp4/SampleVideo_720x480_1mb.mp4",
-      "duration": "1h 32m"
+      "rating": 8.9,
+      "description": "A psychological thriller about memory manipulation and identity crisis.",
+      "thumbnail": "https://via.placeholder.com/300x450/f093fb/white?text=Mind+Games",
+      "video_url": "https://youtu.be/qzGxK6Uiu04",
+      "duration": "2h 5m",
+      "director": "Christopher Nolan",
+      "cast": [
+        "Leonardo DiCaprio",
+        "Marion Cotillard",
+        "Tom Hardy"
+      ],
+      "languages": [
+        "English"
+      ],
+      "quality": [
+        "HD",
+        "4K",
+        "8K"
+      ],
+      "views": 2100000,
+      "likes": 156000,
+      "release_date": "2024-01-10"
     }
   ],
   "tv_shows": [
     {
       "id": 101,
-      "title": "Sample Series 1",
+      "title": "Galaxy Guardians",
       "genre": "Sci-Fi",
       "year": 2024,
-      "rating": 9.1,
-      "description": "A futuristic series exploring space and technology.",
-      "thumbnail": "https://via.placeholder.com/300x450?text=Series+1",
+      "rating": 9.5,
+      "description": "An elite space force protects the galaxy from interdimensional threats.",
+      "thumbnail": "https://via.placeholder.com/300x450/667eea/white?text=Galaxy+Guardians",
       "seasons": 3,
+      "total_episodes": 36,
+      "status": "Ongoing",
+      "creator": "J.J. Abrams",
+      "cast": [
+        "John Boyega",
+        "Daisy Ridley",
+        "Adam Driver"
+      ],
+      "languages": [
+        "English",
+        "Spanish",
+        "Mandarin"
+      ],
+      "quality": [
+        "HD",
+        "4K"
+      ],
+      "views": 5500000,
+      "likes": 425000,
       "episodes": [
         {
           "season": 1,
           "episode": 1,
-          "title": "Pilot",
-          "video_url": "https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_2mb.mp4",
-          "duration": "45m"
+          "title": "First Contact",
+          "description": "The team encounters their first interdimensional threat.",
+          "video_url": "https://youtu.be/qzGxK6Uiu04",
+          "duration": "45m",
+          "air_date": "2024-01-15"
         },
         {
           "season": 1,
           "episode": 2,
-          "title": "The Discovery",
-          "video_url": "https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_1mb.mp4",
-          "duration": "42m"
+          "title": "The Anomaly",
+          "description": "Strange readings lead the team to a mysterious space anomaly.",
+          "video_url": "https://youtu.be/qzGxK6Uiu04",
+          "duration": "44m",
+          "air_date": "2024-01-22"
+        }
+      ]
+    },
+    {
+      "id": 102,
+      "title": "Corporate Shadows",
+      "genre": "Drama",
+      "year": 2023,
+      "rating": 8.8,
+      "description": "Behind-the-scenes drama at a powerful multinational corporation.",
+      "thumbnail": "https://via.placeholder.com/300x450/764ba2/white?text=Corporate+Shadows",
+      "seasons": 2,
+      "total_episodes": 20,
+      "status": "Completed",
+      "creator": "Vince Gilligan",
+      "cast": [
+        "Bryan Cranston",
+        "Aaron Paul",
+        "Anna Gunn"
+      ],
+      "languages": [
+        "English"
+      ],
+      "quality": [
+        "HD",
+        "4K"
+      ],
+      "views": 3200000,
+      "likes": 289000,
+      "episodes": [
+        {
+          "season": 1,
+          "episode": 1,
+          "title": "The Deal",
+          "description": "A major corporate acquisition sets the stage for conflict.",
+          "video_url": "https://youtu.be/qzGxK6Uiu04",
+          "duration": "42m",
+          "air_date": "2023-05-10"
         }
       ]
     }
